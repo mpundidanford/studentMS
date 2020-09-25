@@ -35,7 +35,7 @@ class course(models.Model):
 class Student(models.Model):
     id= models.AutoField(primary_key=True)
     admin = models.OneToOneField(CustomUser,on_delete=models.CASCADE)
-    course_id = models.ForeignKey(course,on_delete=models.DO_NOTHING)
+    course_id = models.ForeignKey(course,on_delete=models.DO_NOTHING,default=1)
     gender = models.CharField(max_length=10)
     profile_pic =models.FileField()
     session_start = models.DateField()
