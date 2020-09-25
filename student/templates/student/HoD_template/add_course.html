@@ -1,0 +1,46 @@
+{% extends 'student/HoD_template/base.html'%}
+ {% block page_title %}
+   ADD COURSE      
+ {% endblock page_title %}
+{% block main_content %}
+<section class="content ">
+    <div class="container-fluid ">
+           <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Add course</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="/add_course_save" method="POST">
+              {% csrf_token %}
+                <div class="card-body">
+              
+                     <div class="form-group">
+                    <label >course name </label>
+                    <input type="text" class="form-control"  placeholder="Enter course name" name="course">
+                  </div>
+                 
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary btn-block">Add course</button>
+                </div>
+        {% if messages %}
+       <div class="col-12">
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <span class="alert alert-danger">{{ message }}</span>
+        {% endif %}
+         {% if message.tags == 'success' %}
+        <span class="alert alert-danger">{{ message }}</span>
+        {% endif %}
+        {% endfor %}
+       </div>
+    {% endif %}
+              </form>
+            </div>
+   
+    </div>
+    <!-- /.container-fluid -->
+</section>
+{% endblock main_content %}
