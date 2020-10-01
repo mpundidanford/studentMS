@@ -15,5 +15,8 @@ urlpatterns = [
     path('add_course', views.addCourse),
     path('add_course_save', views.add_course_save),
     path('add_student', views.addStudent),
-    path('add_student_save', views.add_student_save)
+    path('add_student_save', views.add_student_save),
+    path('add_subject', views.addSubject),
+    path('add_subject_save', views.add_subject_save),
+    path('manage_staff', views.manageStaff)
 ]

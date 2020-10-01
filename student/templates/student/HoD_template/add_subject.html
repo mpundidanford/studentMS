@@ -1,0 +1,64 @@
+{% extends 'student/HoD_template/base.html'%}
+ {% block page_title %}
+   ADD SUBJECT      
+ {% endblock page_title %}
+{% block main_content %}
+<section class="content ">
+    <div class="container-fluid ">
+           <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Add subject</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="/add_subject_save" method="POST">
+              {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label >subject name</label>
+                    <input type="text" class="form-control"  placeholder="Enter first name" name="subject_name">
+                  </div>
+                  <div class="form-group">
+                    <label >Course</label>
+                    <select class="form-control" name="course">
+                      {% for course in Courses %}
+                           <option value="{{course.id}}">{{course.course_name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                 <div class="form-group">
+                    <label >staff</label>
+                    <select class="form-control" name="staff">
+                      {% for staff in staffs %}
+                           <option value="{{staff.id}}">{{staff.first_name}}      {{staff.last_name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                 
+                    
+                
+                 
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary btn-block">Add subject</button>
+                </div>
+        {% if messages %}
+       <div class="col-12">
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <span class="alert alert-success">{{ message }}</span>
+        {% endif %}
+         {% if message.tags == 'success' %}
+        <span class="alert alert-danger">{{ message }}</span>
+        {% endif %}
+        {% endfor %}
+       </div>
+    {% endif %}
+              </form>
+            </div>
+   
+    </div>
+    <!-- /.container-fluid -->
+</section>
+{% endblock main_content %}
